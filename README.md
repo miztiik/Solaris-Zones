@@ -213,8 +213,8 @@ zonecfg -z dbzone -f /export/zone-configs/dbzone.cfg
 ```
 
 ##### Enable ssh root login in Solaris 10 (NOT ADVISABLE)
-### Change the file /etc/ssh/sshd_config with PermitRootLogin yes to replace PermitRootLogin no
-### Restart the services
+##### Change the file /etc/ssh/sshd_config with PermitRootLogin yes to replace PermitRootLogin no
+##### Restart the services
 `svcadm restart svc:/network/ssh:default`
 
 
