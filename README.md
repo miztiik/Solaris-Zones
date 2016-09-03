@@ -1,5 +1,5 @@
 # Solaris-Zones
-How to create Zones &amp; Zone Clusters in Solaris
+How to create Zones &amp; Zone Clusters in `Solaris 10`
 
 # Solaris version
 ```sh
