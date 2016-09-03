@@ -33,7 +33,7 @@ mount -r -F hsfs /dev/dsk/c1t0d0s0 /cdrom
 ```
 
 ### Create State Database Replicas for the SOLARIS VOLUME MANAGER
-####### REF [1] - http://docs.oracle.com/cd/E18752_01/html/816-4520/tasks-metadevices-25.html#addtasks-17877
+###### Ref [1] - http://docs.oracle.com/cd/E18752_01/html/816-4520/tasks-metadevices-25.html#addtasks-17877
 ###### Adding Two State Database Replicas to the Same Slice
 ```sh
 metadb -a -f c0t5000C5000A914A9Bd0s3
@@ -100,8 +100,8 @@ metadb -i
 ```
 
 ### Create an UFS filesystem on this metadevice
-###### REF [1] - https://setaoffice.com/2010/08/08/creating-a-svm-metadevice-and-an-ufs-filesystem/
-###### REF [2] - http://docs.oracle.com/cd/E18752_01/html/817-5093/fscreate-1.html#fscreate-22821
+###### Ref [1] - https://setaoffice.com/2010/08/08/creating-a-svm-metadevice-and-an-ufs-filesystem/
+###### Ref [2] - http://docs.oracle.com/cd/E18752_01/html/817-5093/fscreate-1.html#fscreate-22821
 newfs /dev/md/rdsk/d10
 
 ### Deleting metaslice, db, state
