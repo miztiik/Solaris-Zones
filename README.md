@@ -41,6 +41,7 @@ metadb -a -f c0t5000C50012BC6A0Bd0s6
 ```
 
 ### Create soft partitions
+##### Lets say you want to store all zone data in the `Global Zone` & all `Non-Global Zone` separately. You can create meta devices from different disk slices. You MAY also create a mirror/stripe RAID using SVM for your zone paths and application data. Here we will just use slices, named as metadisk `d[1-3]` for OS data & corresponding application metadisks named as `d[1-3][1-3]`.
 ```sh
 metainit d1 -p c0t5000C5000A914A9Bd0s3 30g
 metainit d2 -p c0t5000C5000A914A9Bd0s3 30g
