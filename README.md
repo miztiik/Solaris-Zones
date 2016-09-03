@@ -102,7 +102,7 @@ metadb -i
 ### Create an UFS filesystem on this metadevice
 ###### Ref [1] - https://setaoffice.com/2010/08/08/creating-a-svm-metadevice-and-an-ufs-filesystem/
 ###### Ref [2] - http://docs.oracle.com/cd/E18752_01/html/817-5093/fscreate-1.html#fscreate-22821
-newfs /dev/md/rdsk/d10
+`newfs /dev/md/rdsk/d10`
 
 ### Deleting metaslice, db, state
 ```sh
