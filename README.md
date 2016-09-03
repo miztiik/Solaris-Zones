@@ -2,18 +2,21 @@
 How to create Zones &amp; Zone Clusters in Solaris
 
 # Solaris version
+```sh
 uname -n
 cat /etc/release
+```
 
 # List of disks in the server
-iostat -En
+`iostat -En`
 
 # To know where each slice is mounted, you can use
-cat /etc/vfstab
+`cat /etc/vfstab`
 
 
 # Find the CD-ROM device name using the iostat command.
 # Ref [1] - https://docs.oracle.com/cd/E10926_01/doc/owb.101/b12150/appbcdmount.htm
+```sh
 iostat -En
 ## c0d0             Soft Errors: 0 Hard Errors: 0 Transport Errors: 0
 ## Model: VBOX HARDDISK   Revision:  Serial No: VB8abc1378-4a46 Size: 17.18GB <17179803648 bytes>
@@ -27,14 +30,18 @@ iostat -En
 ## The CD-ROM device name is c1t0d0.
 ## Mount the CD-ROM
 mount -r -F hsfs /dev/dsk/c1t0d0s0 /cdrom
+```
 
 # Create State Database Replicas for the SOLARIS VOLUME MANAGER
 # REF [1] - http://docs.oracle.com/cd/E18752_01/html/816-4520/tasks-metadevices-25.html#addtasks-17877
 #### Adding Two State Database Replicas to the Same Slice
+```sh
 metadb -a -f c0t5000C5000A914A9Bd0s3
 metadb -a -f c0t5000C50012BC6A0Bd0s6
+```
 
 # Create soft partitions
+```sh
 metainit d1 -p c0t5000C5000A914A9Bd0s3 30g
 metainit d2 -p c0t5000C5000A914A9Bd0s3 30g
 metainit d3 -p c0t5000C5000A914A9Bd0s3 30g
@@ -42,8 +49,10 @@ metainit d3 -p c0t5000C5000A914A9Bd0s3 30g
 metainit d11 -p c0t5000C50012BC6A0Bd0s6 48g
 metainit d22 -p c0t5000C50012BC6A0Bd0s6 100g
 metainit d33 -p c0t5000C50012BC6A0Bd0s6 130g
+```
 
 # Create the UFS filesytems for root and data
+```sh
 newfs /dev/md/rdsk/d1
 newfs /dev/md/rdsk/d2
 newfs /dev/md/rdsk/d3
@@ -51,25 +60,29 @@ newfs /dev/md/rdsk/d3
 newfs /dev/md/rdsk/d11
 newfs /dev/md/rdsk/d22
 newfs /dev/md/rdsk/d33
+```
 
 # Mount the filesystems under /export
+```sh
 cd /export
 mkdir webzone appzone dbzone
 mount -F ufs -o logging /dev/md/dsk/d1 /export/webzone
 mount -F ufs -o logging /dev/md/dsk/d2 /export/appzone
 mount -F ufs -o logging /dev/md/dsk/d3 /export/dbzone
+```
 
 # To finish, make sure to add under /etc/vfstab
+```sh
 /dev/md/dsk/d1 /dev/md/rdsk/d1 /export/webzone ufs 2 yes logging
 /dev/md/dsk/d2 /dev/md/rdsk/d2 /export/appzone ufs 2 yes logging
 /dev/md/dsk/d3 /dev/md/rdsk/d3 /export/dbzone ufs 2 yes logging
-
+```
 
 
 
 # Creating a Striped Metadevice of Two Slices With a 32 Kbyte Interlace
 # The striped metadevice, d10, consists of a single stripe (the number 1) made of two slices (the number 2). The -i option sets the interlace to 32 Kbytes. (The interlace cannot be less than 8 Kbytes, nor greater than 100 Mbytes.) If interlace were not specified, the striped metadevice would use the default of 16 Kbytes. The system verifies that the Concat/Stripe object has been set up.
-metainit d10 1 1 c0t5000C5000A914A9Bd0s3 -i 32k
+`metainit d10 1 1 c0t5000C5000A914A9Bd0s3 -i 32k`
 ## d10: Concat/Stripe is setup
 
 metattach d10 c0t5000C50012BC6A0Bd0s6
