@@ -206,12 +206,12 @@ zonecfg -z webzone export -f /export/zone-configs/webzone.cfg
 ```
 
 ### Installing Software From a Mounted CD
-###### 
+###### Ref[1] - https://docs.oracle.com/cd/E19455-01/806-7932/6jgp82k2l/index.html
  - Mount the CD ROM
  - Note the directory path to the software on the CD you want to add
  - dd one or more packages to the system
  `/usr/sbin/pkgadd -d device_name pkgid` , where
-   - _device_name_ : Is the directory path to the CD that contains the software you want to add to the installed system. 
+   - _device_name_ : Is the directory path to the CD that contains the software you want to add to the installed system.
    - _pkgid_ : Is the name of the software package to be added to the installed system. For example, SUNWaudio.
  - When you're done, use the `pkgchk` command to verify that the package is installed correctly
  `/usr/sbin/pkgchk -v pkgid`
