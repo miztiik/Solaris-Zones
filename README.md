@@ -138,13 +138,13 @@ zonecfg:webzone:net> set address=10.10.0.7
 zonecfg:webzone:net> set physical=igb0
 zonecfg:webzone:net> end
 
-zonecfg:my-zone3> add fs 
-zonecfg:my-zone3:fs> set dir=/webdata
-zonecfg:my-zone3:fs> set special=/dev/md/dsk/d11
-zonecfg:my-zone3:fs> set raw=/dev/md/rdsk/d11
-zonecfg:my-zone3:fs> set type=ufs
-zonecfg:my-zone3:fs> add options [logging, nosuid]
-zonecfg:my-zone3:fs> end
+zonecfg:webzone> add fs 
+zonecfg:webzone:fs> set dir=/webdata
+zonecfg:webzone:fs> set special=/dev/md/dsk/d11
+zonecfg:webzone:fs> set raw=/dev/md/rdsk/d11
+zonecfg:webzone:fs> set type=ufs
+zonecfg:webzone:fs> add options [logging, nosuid]
+zonecfg:webzone:fs> end
 
 zonecfg:webzone> info
 ## zonename: webzone
