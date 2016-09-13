@@ -41,8 +41,16 @@ or
 mount -F hsfs -o ro /dev/dsk/c2t0d0s0 /tmp/guestAdditions
 ```
 
-:+1: You have just mount your media, Try `ls -l /tmp/guestAdditions` to access your media
+:+1: You have just mounted your media, Try `ls -l /tmp/guestAdditions` to access your media
 
 _To sucessfully mount it (I would like to stress it again that directory /tmp/guestAdditions should exist and have proper permissions for operation to succeed)_
 
 ## Install Virtualbox Guest Additions
+```sh
+pkgadd -d VBoxSolarisAdditions.pkg
+```
+
+You should see something like this at the end,
+
+> Installation of <SUNWvboxguest> was successful.
+
