@@ -1,6 +1,8 @@
 # Solaris-Zones
 How to create Zones &amp; Zone Clusters in `Solaris 10`
 
+![Solaris_Zones](/img/https://raw.githubusercontent.com/miztiik/Solaris-Zones/master/img/InheritedPackagesZones.png)
+
 # Solaris version
 ```sh
 uname -n
