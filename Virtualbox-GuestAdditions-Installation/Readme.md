@@ -4,6 +4,9 @@
 Get the device name,  device name associated with the CD drive is usually in this format c**x**t**y**d**z**s**n**. Use the `iostat` command to determine it,
 
 ```sh
+root@solaris-node-01:/# uname -a
+SunOS solaris-node-01 5.11 11.3 i86pc i386 i86pc
+
 root@solaris-node-01:~# iostat -En
 c1t0d0           Soft Errors: 0 Hard Errors: 0 Transport Errors: 0
 Vendor: ATA      Product: VBOX HARDDISK    Revision: 1.0  Serial No:
@@ -58,10 +61,20 @@ _To sucessfully mount it (I would like to stress it again that directory /tmp/gu
 
 ## Install Virtualbox Guest Additions
 ```sh
-pkgadd -d VBoxSolarisAdditions.pkg
+pkgadd -G -d VBoxSolarisAdditions.pkg
 ```
 
 You should see something like this at the end,
 
 > Installation of `<SUNWvboxguest>` was successful.
+
+## Mount VBox Shared Folders
+```sh
+root@soltest1:~# mkdir /mnt/solShare
+root@soltest1:~# mount -F vboxfs -o uid=<userID>,gid=<groupID> solShare /mnt/solShare
+
+root@solaris-node-01:/# df -h solShare
+Filesystem             Size   Used  Available Capacity  Mounted on
+solShare               119G    64G        55G    54%    /mnt/sf_solShare
+```
 
