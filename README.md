@@ -189,14 +189,13 @@ zoneadm -z webzone boot
 ### How to Exit a Non-Global Zone
 `zonename# ~.`
 
-### Halting, Uninstalling & Deleting a zone
+### Halting, Uninstalling Zone
 ```sh
-oneadm –z webzone halt
+zoneadm –z webzone halt
 zoneadm –z webzone uninstall -F
-zoneadm –z webzone delete -F
 ```
 
-### Delete a Zone Configuration
+### Delete Zone Configuration
 `zonecfg -z webzone delete -F`
 
 ### Export current zone configuration
