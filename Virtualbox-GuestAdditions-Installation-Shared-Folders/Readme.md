@@ -68,10 +68,10 @@ You should see something like this at the end,
 
 > Installation of `<SUNWvboxguest>` was successful.
 
-## Mount VBox Shared Folders
+## Mount VirtualBox Shared Folders
 ```sh
-root@soltest1:~# mkdir /mnt/solShare
-root@soltest1:~# mount -F vboxfs -o uid=<userID>,gid=<groupID> solShare /mnt/solShare
+root@solaris-node-01:/# mkdir /mnt/solShare
+root@solaris-node-01:/# mount -F vboxfs -o uid=<userID>,gid=<groupID> solShare /mnt/solShare
 
 root@solaris-node-01:/# df -h solShare
 Filesystem             Size   Used  Available Capacity  Mounted on
