@@ -4,32 +4,19 @@
 Get the device name,  device name associated with the CD drive is usually in this format c**x**t**y**d**z**s**n**. Use the `iostat` command to determine it,
 
 ```sh
-iostat -En
+root@solaris-node-01:~# iostat -En
+c1t0d0           Soft Errors: 0 Hard Errors: 0 Transport Errors: 0
+Vendor: ATA      Product: VBOX HARDDISK    Revision: 1.0  Serial No:
+Size: 26.84GB <26843545600 bytes>
+Media Error: 0 Device Not Ready: 0 No Device: 0 Recoverable: 0
+Illegal Request: 4 Predictive Failure Analysis: 0 Non-Aligned Writes: 0
+*c2t0d0*           Soft Errors: 0 Hard Errors: 0 Transport Errors: 0
+Vendor: VBOX     Product: CD-ROM           Revision: 1.0  Serial No:
+Size: 0.06GB <59262976 bytes>
+Media Error: 0 Device Not Ready: 0 No Device: 0 Recoverable: 0
+Illegal Request: 0 Predictive Failure Analysis: 0 Non-Aligned Writes: 0
+root@solaris-node-01:~#
 ```
-> root@solaris-node-01:~# iostat -En
-
-> c1t0d0           Soft Errors: 0 Hard Errors: 0 Transport Errors: 0
-
-> Vendor: ATA      Product: VBOX HARDDISK    Revision: 1.0  Serial No:
-
-> Size: 26.84GB <26843545600 bytes>
-
-> Media Error: 0 Device Not Ready: 0 No Device: 0 Recoverable: 0
-
-> Illegal Request: 4 Predictive Failure Analysis: 0 Non-Aligned Writes: 0
-
-> *c2t0d0*           Soft Errors: 0 Hard Errors: 0 Transport Errors: 0
-
-> Vendor: VBOX     Product: CD-ROM           Revision: 1.0  Serial No:
-
-> Size: 0.06GB <59262976 bytes>
-
-> Media Error: 0 Device Not Ready: 0 No Device: 0 Recoverable: 0
-
-> Illegal Request: 0 Predictive Failure Analysis: 0 Non-Aligned Writes: 0
-
-> root@solaris-node-01:~#
-
 Here, 
  - *-E* displays all device error statistics &,
  - *-n* shows the names in descriptive format.
@@ -44,10 +31,6 @@ chmod a+rw /tmp/guestAdditions
 ```
 
 ### Mount the media
-```sh
-mount -F hsfs -r /dev/sr0 /tmp/guestAdditions
-```
-or
 ```sh
 mount -F hsfs -o ro /dev/dsk/c2t0d0s0 /tmp/guestAdditions
 ```
