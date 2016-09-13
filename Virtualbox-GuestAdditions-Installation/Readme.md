@@ -63,5 +63,5 @@ pkgadd -d VBoxSolarisAdditions.pkg
 
 You should see something like this at the end,
 
-> Installation of <SUNWvboxguest> was successful.
+> Installation of `<SUNWvboxguest>` was successful.
 
